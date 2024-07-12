@@ -19,7 +19,7 @@
 
     <!-- Phone number Box -->
     <div class="container">
-        <textarea id="message" rows="5" placeholder="Enter your message here..."></textarea>
+        <textarea id="message" rows="5"></textarea>
         <button id="encryptButton">Encrypt</button>
         <p id="encryptedMessage"></p>
     </div>
