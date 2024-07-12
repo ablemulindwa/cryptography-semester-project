@@ -9,20 +9,27 @@
     <title>Simple Encryption Tool</title>
 </head>
 <body>
+    <!--Heading/Instruction-->
     <h1>Encrypt Your Message</h1>
-    <!-- Encryption Message Box-->
-    <div class="container">
-        <textarea id="message" rows="5" placeholder="Enter your message here..."></textarea>
-        <button id="encryptButton">Encrypt</button>
-        <p id="encryptedMessage"></p>
-    </div>
+    
+    <!-- Encryption Message Box-->    
+    <form action="home.php" method="get">
+        <div class="container">
+            <input type="text" name="message">
+            <button id="encryptButton">Encrypt</button>
+            <p id="encryptedMessage"></p>
+            <?php echo $_GET["message"] ?>
+        </div>
 
-    <!-- Phone number Box -->
-    <div class="container">
-        <textarea id="message" rows="5"></textarea>
-        <button id="encryptButton">Encrypt</button>
-        <p id="encryptedMessage"></p>
-    </div>
+    </form>
+
+        <!-- Phone number Box -->
+        <div class="container">
+            <textarea id="message" rows="5"></textarea>
+            <button id="encryptButton">Encrypt</button>
+            <p id="encryptedMessage"></p>
+        </div>
+    
 
     <!-- Implementation of The Algorithm-->
 </body>
