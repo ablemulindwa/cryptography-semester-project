@@ -13,14 +13,14 @@
     <h1>Encrypt Your Message</h1>
     
     <!-- Encryption Message Box-->    
-    <form action="home.php" method="get">
+    <form action="home.php" method="post">
         <div class="container">
-            <input type="text" name="message">
+            <input type="text" name="message"><br>
             <button id="encryptButton">Encrypt</button>
-            <p id="encryptedMessage"></p>
-            <?php echo $_GET["message"] ?>
+            
+            <!--Test that the GET statement works-->
+            <?php echo $_POST["message"] ?>
         </div>
-
     </form>
 
         <!-- Phone number Box -->
@@ -30,7 +30,6 @@
             <p id="encryptedMessage"></p>
         </div>
     
-
     <!-- Implementation of The Algorithm-->
 </body>
 </html>
