@@ -6,7 +6,13 @@ $myData = "This is my message to encrypt, there shall not be anyone decrypting t
 $method = 'AES-256-CBC';
 
 // Encryption key (replace with a strong and secure key)
-$key = openssl_random_pseudo_bytes(32);
+$key = createKey();
+
+//Create a secure key function
+function createKey(){
+    $key = openssl_random_pseudo_bytes(32);
+    return $key;
+}
 
 // Encryption function
 function encrypt($myData, $method, $key){
@@ -31,14 +37,11 @@ function encrypt($myData, $method, $key){
 
 // Decryption function
 function decrypt($encoded_message, $method, $key){
-        
-    //Encoded message
-    if($encoded_message == null){
-        $encoded_message = encrypt($myData, $method, $key, $iv);
-    }
-    
+    //Decode the data
+    $decoded_message = base64_decode($encoded_message);
+
     //Decrypt the data    
-    $decrypted_data = openssl_decrypt($encoded_message, $method, $key, $options=0);
+    $decrypted_data = openssl_decrypt($decoded_message, $method, $key, $options=0);
 
     // Check for decryption success
     if ($decrypted_data === false) {
@@ -46,9 +49,12 @@ function decrypt($encoded_message, $method, $key){
     } else {
         echo "\nDecrypted data: " . $decrypted_data . PHP_EOL;
     }
+
+    return $decrypted_data;
 }
 
-echo "\nOriginal Message: " . $myData . PHP_EOL;
+//echo "\nOriginal Message: " . $myData . PHP_EOL;
 $encoded_message = encrypt($myData, $method, $key);
-echo "\nEncoded Encrypted Message: " . $encoded_message . PHP_EOL;
-//decrypt($encoded_message, $method, $key);
+//echo "\nEncoded Encrypted Message: " . $encoded_message . PHP_EOL;
+$decrypted_data = decrypt($encoded_message, $method, $key);
+//echo "\nDecrypted Message: " . $decrypted_data . PHP_EOL;
