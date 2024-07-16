@@ -14,19 +14,21 @@
         <div class="container">
             <input type="text" name="message"><br>
             <button id="encryptButton">Encrypt</button>
-            
-            <!--Test that the GET statement works-->
-            <?php echo $_POST["message"] ?>
         </div>
     </form>
-
-        <!-- Phone number Box -->
+    
+    <!-- Decryption Message Box -->
+    <form action="home.php" method="get">
         <div class="container">
             <textarea id="message" rows="5"></textarea>
-            <button id="encryptButton">Encrypt</button>
-            <p id="encryptedMessage"></p>
+            <button id="decryptButton">Decrypt</button>
         </div>
+    </form>
     
     <!-- Implementation of The Algorithm-->
+    <?php
+        include 'algorithm.php';
+
+    ?>
 </body>
 </html>
