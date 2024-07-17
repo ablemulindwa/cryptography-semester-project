@@ -1,2 +1,4 @@
 <?php
-include 'algorithm.php';
+include 'test.php';
+
+session_start();
