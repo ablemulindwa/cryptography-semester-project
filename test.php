@@ -1,4 +1,8 @@
 <?php
+
+$message = $_POST('message');
+echo $message;
+
 //Test data
 $myData = "This is my message to encrypt, there shall not be anyone decrypting this message except for the right decrypter.";
 

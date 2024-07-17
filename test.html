@@ -28,11 +28,39 @@
         <p>Just enter your intended message in the text box below, then press the Encrypt button.</p>
         <p>Or if you would like to decrypt a message sent to you, press the Decrypt button.</p>
         
-        <!--Block for input elements-->
-        <form>
-            <textarea>Enter your message...</textarea>
-            <button>Encrypt</button>
-            <button>Decrypt</button>
+        <!--Block for input and encryption elements-->
+        <form id="enc-form" action="/test.php" method="post">
+
+            <!--Text area for collection of user inputted message-->
+            <textarea id="enc-textbox" name="message">Enter your message... </textarea>
+            <!--Button container, for styling purposes-->
+            <div class="enc-btns">
+                <button class="enc-button">Encrypt</button>
+            </div>
+        </form>
+
+        <!--Block for sms and encryption key elements-->
+        <form id="enc-form" action="/test.php" method="post">
+
+            <!--Text area for collection of user inputted message-->
+            <textarea id="enc-textbox" name="message">Your encryption/decryption key here...</textarea>
+            
+            <!--Button container, for styling purposes-->
+            <div class="enc-btns">
+                <button class="enc-button">Generate key</button>
+            </div>
+        </form>
+
+        <!--Block for input and decryption elements-->
+        <form id="enc-form" action="/test.php" method="post">
+
+            <!--Text area for collection of user inputted message-->
+            <textarea id="enc-textbox" name="message">Enter your message...</textarea>
+            
+            <!--Button container, for styling purposes-->
+            <div class="enc-btns">
+                <button class="enc-button">Decrypt</button>
+            </div>
         </form>
     </main>
     <footer>

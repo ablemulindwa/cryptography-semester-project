@@ -2,12 +2,14 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #5299d3;
     min-height: 100%;
+    margin: 0px;
 }
 
 footer {
     text-align: center;
     color: #eda4bd;
     background-color: #0b5563;
+    width: 100%;
 }
 
 main {
@@ -30,4 +32,33 @@ main {
 
 .enc-headings {
     color: #0b5563;
+}
+
+#enc-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+#enc-textbox {
+    display: content;
+    width: inherit;
+    margin: 10pt;
+    padding: 10pt;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.enc-btns {
+    display: flex;
+    padding: 10pt;
+    justify-content: space-evenly;
+}
+
+.enc-button {
+    padding: 10pt 20pt;
+    border-radius: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #f4f3ee;
+    background-color: #210b2c;
 }
