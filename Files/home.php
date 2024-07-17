@@ -38,11 +38,10 @@ $_SESSION['message'] = null;
         </p>
         <h2 class="enc-headings">Getting Started</h2>
         <p>Just enter your intended message in the text box below, then press the Encrypt button.</p>
-        <p>Or if you would like to decrypt a message sent to you, press the Decrypt button.</p>
         
         <!--Block for input and encryption elements-->
         <div id="form-container">
-            <form id="enc-form" action="/Files/test.php" method="post">
+            <form id="enc-form" class="enc-form" action="/Files/test.php" method="post">
 
                 <!--Text area for collection of user inputted message-->
                 <textarea id="enc-textbox" type="text" name="message">Encrpyt your text here...</textarea>
@@ -55,18 +54,19 @@ $_SESSION['message'] = null;
                     <!--Encrypt button-->
                     <button type="submit" form="enc-form" value="Submit" class="enc-button">Encrypt</button>
                     
-                    <!--Startover button-->
-                    <button type="submit" name="clear" value="clear" onclick="clear()" class="enc-button">Start over</button>
-                    
-                    <!--Startover function
+                    <form method="post">
+                        <!--Startover button-->
+                        <button type="submit" name="clear" value="clear" onclick="clear()" class="enc-button">Start over</button>
+                    </form>
+
+                    <!--Startover function-->
                     <?php
-                        //Clear session function
-                            function clear(){
-                                if (isset($_SESSION['message']) && isset($_SESSION['key']) && isset($_POST['clear'])){
-                                    session_unset();
-                                    session_destroy();
-                                }
-                            }
+                        //Clear session function                        
+                        if (isset($_SESSION['message']) && isset($_SESSION['key']) && isset($_POST['clear'])){
+                            session_unset();
+                            session_destroy();
+                            session_start();
+                        }
                     ?>
             </div>
             
@@ -82,33 +82,37 @@ $_SESSION['message'] = null;
                     }
                 ?>
             </p>
-
         </div>
+
+        <p>Or if you would like to decrypt a message sent to you, press the Decrypt button.</p>
+
+        <!--Block for output and decryption elements-->
+        <div id="form-container">
+            <form id="dec-form" class="enc-form" action="/Files/test.php" method="post">
+
+                <!--Text area for collection of user inputted message-->
+                <textarea id="enc-textbox" type="text" name="message">Paste here for decryption...</textarea>
+                <input type="text" name="key"></input>
+
+            </form>
+
+            <!--Decryption button-->
+            <div class="enc-btns">
+
+                <!--Encrypt button-->
+                <button type="submit" form="dec-form" value="Submit" class="enc-button">Decrypt</button>
         
+            </div>
+            
+            <!--HTML/PHP block for after decrypting-->
+            <p class="finished-output">
+                <?php
+                    //If done decrypting.
+                    
+                ?>
+            </p>
+        </div
          
-
-        <!--Block 2
-        <form id="enc-form1" action="/Files/test.php" method="post">
-
-            <textarea id="enc-textbox" name="mymessage">Your encryption/decryption key here...</textarea>
-
-            <div class="enc-btns">
-                <button class="enc-button">Generate key</button>
-            </div>
-        </form>-->
-
-        <!--
-        <form id="dec-form" action="/test.php" method="post">
-
-            
-            <textarea id="enc-textbox" name="decmessage">Enter your message...</textarea>
-            
-
-            <div class="enc-btns">
-                <button class="enc-button">Decrypt</button>
-            </div>
-        </form>-->
-
     </main>
     <footer>
         <p class="footer-txt">Copyright © 2024. All rights reserved.</p>
