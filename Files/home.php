@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Simple Encryption Tool</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
     <!-- Decryption Message Box -->
     <form action="home.php" method="get">
         <div class="container">
-            <textarea id="message" rows="5"></textarea>
+            <input type="text" name="message"><br>
             <button id="decryptButton">Decrypt</button>
         </div>
     </form>
