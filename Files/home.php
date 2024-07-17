@@ -1,14 +1,24 @@
+<?php
+//Start my session so that variables are persistent
+session_start();
+
+//Message session variable to store encrypted message
+$_SESSION['message'] = null;
+$_SESSION['key'] = null;
+
+?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Encrypt Me!</title>
 </head>
 <body>
     <header>
         <div class="header-ribbon">
-            <img id="enc-logo" src="Files/logo.png" alt="Encrypt Me! logo"></img>
+            <img id="enc-logo" src="logo.png" alt="Encrypt Me! logo"></img>
             <h1>Encrypt Me!</h1>
         </div>
     </header>
@@ -29,21 +39,24 @@
         <p>Or if you would like to decrypt a message sent to you, press the Decrypt button.</p>
         
         <!--Block for input and encryption elements-->
-        <form id="enc-form" action="/test.php" method="post">
+        <form id="enc-form" action="/Files/test.php" method="post">
 
             <!--Text area for collection of user inputted message-->
-            <textarea id="enc-textbox" name="message">Enter your message... </textarea>
+            <textarea id="enc-textbox" type="text" name="message">Enter your message... </textarea>
             <!--Button container, for styling purposes-->
-            <div class="enc-btns">
-                <button class="enc-button">Encrypt</button>
-            </div>
         </form>
+        
+        <!--Encryption button-->
+        <div class="enc-btns">
+            <button type="submit" form="enc-form" value="Submit" class="enc-button">Encrypt</button>
+        </div>
 
+        <!--Block 2-->
         <!--Block for sms and encryption key elements-->
-        <form id="enc-form" action="/test.php" method="post">
+        <form id="enc-form1" action="/Files/test.php" method="post">
 
             <!--Text area for collection of user inputted message-->
-            <textarea id="enc-textbox" name="message">Your encryption/decryption key here...</textarea>
+            <textarea id="enc-textbox" name="mymessage">Your encryption/decryption key here...</textarea>
             
             <!--Button container, for styling purposes-->
             <div class="enc-btns">
@@ -52,10 +65,10 @@
         </form>
 
         <!--Block for input and decryption elements-->
-        <form id="enc-form" action="/test.php" method="post">
+        <form id="dec-form" action="/test.php" method="post">
 
             <!--Text area for collection of user inputted message-->
-            <textarea id="enc-textbox" name="message">Enter your message...</textarea>
+            <textarea id="enc-textbox" name="decmessage">Enter your message...</textarea>
             
             <!--Button container, for styling purposes-->
             <div class="enc-btns">

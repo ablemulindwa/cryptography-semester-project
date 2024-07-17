@@ -1,12 +1,12 @@
 <?php
 //Test data
-$myData = "This is my message to encrypt, there shall not be anyone decrypting this message except for the right decrypter.";
+$myData = " ";
 
 //Encryption method (AES-256 in CBC mode)
 $method = 'AES-256-CBC';
 
 // Encryption key (replace with a strong and secure key)
-$key = createKey();
+$key = " ";
 
 //Create a secure key function
 function createKey(){
@@ -54,7 +54,13 @@ function decrypt($encoded_message, $method, $key){
 }
 
 //echo "\nOriginal Message: " . $myData . PHP_EOL;
-$encoded_message = encrypt($myData, $method, $key);
+
+//Test statement 1
+//$encoded_message = encrypt($myData, $method, $key);
+
 //echo "\nEncoded Encrypted Message: " . $encoded_message . PHP_EOL;
-$decrypted_data = decrypt($encoded_message, $method, $key);
+
+//Test statement 2
+//$decrypted_data = decrypt($encoded_message, $method, $key);
+
 //echo "\nDecrypted Message: " . $decrypted_data . PHP_EOL;
