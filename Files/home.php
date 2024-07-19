@@ -37,7 +37,7 @@ $_SESSION['message'] = null;
             for example through WhatsApp messaging or email.
         </p>
         <h2 class="enc-headings">Getting Started</h2>
-        <p>Just enter your intended message in the text box below, then press the Encrypt button.</p>
+        <p>Just enter your intended message in the text box below, then press the <b>Encrypt</b> button.</p>
         
         <!--Block for input and encryption elements-->
         <div id="form-container">
@@ -59,7 +59,7 @@ $_SESSION['message'] = null;
                         <button type="submit" name="clear" value="clear" onclick="clear()" class="enc-button">Start over</button>
                     </form>
 
-                    <!--Startover function-->
+                    <!--TODO: Startover function-->
                     <?php
                         //Clear session function                        
                         if (isset($_SESSION['message']) && isset($_SESSION['key']) && isset($_POST['clear'])){
@@ -71,28 +71,52 @@ $_SESSION['message'] = null;
             </div>
             
             <!--HTML/PHP block for obtaining a generated key-->
-            <p class="finished-output">
-                <?php
-                    //If done encrypting, paste the key somewhere where the user can see it.
-                    if(isset($_SESSION['key'])) {
-                        echo "Generated Key: " . $_SESSION['key'];
-                    }
-                    else {
-                        echo "No generated Key";
-                    }
-                ?>
-            </p>
+            <div>
+                <!---->
+                <p class="finished-output">
+                    <?php
+                        //If done encrypting, paste the key somewhere where the user can see it.
+                        if(isset($_SESSION['key'])) {
+                            echo "Generated Key: " . $_SESSION['key'];
+                        }
+                        else {
+                            echo "No generated Key";
+                        }
+                    ?>
+                </p>
+            </div>
+
+            <div>
+                <!--Send Message to Phone Number-->
+                <div id="key-box">
+                    <label for="key" id="key-text">Enter Phone Number: </label>
+                    <input type="text" id="key-pwd" name="key"></input>
+                </div>
+
+                <!--Send Message to Phone Number-->
+                <button type="submit" form="dec-form" value="Submit" class="enc-button">Send Message</button>
+
+            </div>
         </div>
 
-        <p>Or if you would like to decrypt a message sent to you, press the Decrypt button.</p>
+        <p>Or if you would like to <b>decrypt</b> a message sent to you, press the Decrypt button.</p>
 
         <!--Block for output and decryption elements-->
         <div id="form-container">
-            <form id="dec-form" class="enc-form" action="/Files/test.php" method="post">
+            <form id="dec-form" class="enc-form" action="/Files/decrypt.php" method="post">
 
                 <!--Text area for collection of user inputted message-->
-                <textarea id="enc-textbox" type="text" name="message">Paste here for decryption...</textarea>
-                <input type="text" name="key"></input>
+                <textarea id="enc-textbox" type="text" name="message">Paste cipher text here for decryption...</textarea>
+                
+                <!--Text area for collection of generated encryption key-->
+                <div id="key-box">
+                    <label for="key" id="key-text">Enter Generated Key: </label>
+                    <input type="text" id="key-pwd" name="key"></input>
+                </div>
+
+                <div class="enc-btns">
+        
+            </div>
 
             </form>
 

@@ -5,32 +5,39 @@ session_start();
 
 //Code to check for user input
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $message = htmlspecialchars($_POST['message']);
-    
+    //$message = htmlspecialchars($_POST['message']);
+    $message = "cDVCUXNadWNJUlQ0VTlleVNWYW9JZz09";
+
     //Code to generate inputs for encryption
     $myData = $message;
     $key = createKey(); 
 
     //Encryption block, ensuring that message 
     //can't be double encrypted in the same session.
-    if ($_SESSION['done'] == Null){
+    if ($_SESSION['done'] == true){
         
         //Capture the key that has been used
-        $_SESSION['key'] = $key;
+        $_SESSION['key'] = $key;     
         
         //Capture the message that has been encrypted
-        $_SESSION['message'] = encrypt($myData, $method, $key);
+        //$_SESSION['message'] = decrypt($myData, $method, $key);
 
-        //Change the boolean value to true
-        $_SESSION['done'] = true;
+        //Decrypt the message that has been encrypted
+        $message = decrypt($myData, $method, $key);
+
+        //Change the boolean value to null
+        $_SESSION['done'] = null;
 
     } else {
-        echo "Encryption failed! Can't encrypt a message more than once.<br>";
+        echo "Decryption failed! Missing credentials.<br>";
     }
 
-    //Tests for the output
-    echo "The new, encrypted message is: " . $_SESSION['message']."<br>";
-    echo "The generated key is: " . $_SESSION['key'];
+    echo "The new, decrypted message is: " . $message;
+    echo "The key used is: " . $key;
 
-    header("Location: ../Files/home.php");
+    //Tests for the output
+    //echo "The new, decrypted message is: " . $_SESSION['message']."<br>";
+    //echo "The key used is: " . $_SESSION['key'];
+
+    //header("Location: ../Files/home.php");
 }
