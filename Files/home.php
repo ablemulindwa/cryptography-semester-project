@@ -3,11 +3,6 @@
 //Start my session so that variables are persistent
 session_start();
 
-//Message session variable to store encrypted message
-//$_SESSION['message'] = null;
-
-//$_SESSION['done'] = null;
-
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +36,7 @@ session_start();
         <p>Just enter your intended message in the text box below, then press the <b>Encrypt</b> button.</p>
         <p><b>PLEASE!</b> remember to save the <b>Encrypted message</b> in order to avoid losing access to your data.</p>
         
-        <!--Block for input and encryption elements-->
+        <!--Block for encryption elements-->
         <div id="form-container">
             <form id="enc-form" class="enc-form" action="/Files/test.php" method="post">
 
@@ -92,22 +87,23 @@ session_start();
 
             <!--TODO: HTML block for sending the encryption key to another user-->
             <div class="send-key">
+                <form id="sms-form" class="enc-form" action="/Files/sms.php" method="post">
+                    <!--Input box for sending key to other user-->
+                    <div id="key-box">
+                        <label for="key" id="key-text">Enter Phone Number: </label>
+                        <input type="text" id="key-pwd" name="key"></input>
+                    </div>
 
-                <!--Input box for sending key to other user-->
-                <div id="key-box">
-                    <label for="key" id="key-text">Enter Phone Number: </label>
-                    <input type="text" id="key-pwd" name="key"></input>
-                </div>
-
-                <!--Send decryption key to Phone Number-->
-                <button type="submit" form="dec-form" value="Submit" class="enc-button">Send key</button>
-
+                    <!--Send decryption key to Phone Number-->
+                    <button type="submit" form="sms-form" value="Submit" class="enc-button">Send key</button>
+                
+                </form>
             </div>
         </div>
 
         <p><br><br>Or if you would like to <b>Decrypt</b> a message sent to you, press the Decrypt button.</p>
 
-        <!--TODO: Block for decryption elements-->
+        <!--Block for decryption elements-->
         <div id="form-container">
             <form id="dec-form" class="enc-form" action="/Files/decrypt.php" method="post">
 
