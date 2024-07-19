@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     //Code to generate inputs for encryption
     $myData = $message;
-    $key = createKey(); 
+    $key = createKey();
 
     //Encryption block, ensuring that message 
     //can't be double encrypted in the same session.

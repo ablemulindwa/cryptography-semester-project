@@ -4,7 +4,7 @@
 session_start();
 
 //Message session variable to store encrypted message
-$_SESSION['message'] = null;
+//$_SESSION['message'] = null;
 
 //$_SESSION['done'] = null;
 
@@ -31,20 +31,24 @@ $_SESSION['message'] = null;
         </p>
         <h2 class="enc-headings">How It Works</h2>
         <p> 
-            Encrypt Me works by taking a message from the form and converting it into cypher text. 
-            The service also allows you to send a decryption key to your intended recipient via SMS.
-            The message can be shared with the recipient using the conventional methods of communication, 
-            for example through WhatsApp messaging or email.
+            Encrypt Me works by taking a <b>message</b> from the form and converting it into <b>cypher text</b>.
+            The service also allows you to generate a secure <b>decryption key</b>, which can then be securely sent to your intended recipient via SMS.
+            The resulting <b>encrypted message</b> can be shared with the recipient using more conventional methods of communication, 
+            for example through WhatsApp messaging or email, ensuring that even if it is intercepted, 
+            <b>the attackers will be unable to decypher</b> the cipher text.
         </p>
         <h2 class="enc-headings">Getting Started</h2>
         <p>Just enter your intended message in the text box below, then press the <b>Encrypt</b> button.</p>
+        <p><b>PLEASE!</b> remember to save the <b>Encrypted message</b> in order to avoid losing access to your data.</p>
         
         <!--Block for input and encryption elements-->
         <div id="form-container">
             <form id="enc-form" class="enc-form" action="/Files/test.php" method="post">
 
                 <!--Text area for collection of user inputted message-->
-                <textarea id="enc-textbox" type="text" name="message">Encrpyt your text here...</textarea>
+                <textarea id="enc-textbox" type="text" name="message" placeholder="Enter your message here..."><?php 
+                    echo trim($_SESSION['message']);
+                ?></textarea>
 
             </form>
 
@@ -86,27 +90,29 @@ $_SESSION['message'] = null;
                 </p>
             </div>
 
-            <div>
-                <!--Send Message to Phone Number-->
+            <!--TODO: HTML block for sending the encryption key to another user-->
+            <div class="send-key">
+
+                <!--Input box for sending key to other user-->
                 <div id="key-box">
                     <label for="key" id="key-text">Enter Phone Number: </label>
                     <input type="text" id="key-pwd" name="key"></input>
                 </div>
 
-                <!--Send Message to Phone Number-->
-                <button type="submit" form="dec-form" value="Submit" class="enc-button">Send Message</button>
+                <!--Send decryption key to Phone Number-->
+                <button type="submit" form="dec-form" value="Submit" class="enc-button">Send key</button>
 
             </div>
         </div>
 
-        <p>Or if you would like to <b>decrypt</b> a message sent to you, press the Decrypt button.</p>
+        <p><br><br>Or if you would like to <b>Decrypt</b> a message sent to you, press the Decrypt button.</p>
 
         <!--Block for output and decryption elements-->
         <div id="form-container">
             <form id="dec-form" class="enc-form" action="/Files/decrypt.php" method="post">
 
                 <!--Text area for collection of user inputted message-->
-                <textarea id="enc-textbox" type="text" name="message">Paste cipher text here for decryption...</textarea>
+                <textarea id="enc-textbox" type="text" name="message" placeholder="Paste cipher text here for decryption..."></textarea>
                 
                 <!--Text area for collection of generated encryption key-->
                 <div id="key-box">
@@ -129,10 +135,11 @@ $_SESSION['message'] = null;
             </div>
             
             <!--HTML/PHP block for after decrypting-->
-            <p class="finished-output">
-                <?php
+            <p class="finished-output"><?php
                     //If done decrypting.
-                    
+                    if(isset($_SESSION['decrypt'])) {
+                        echo "The Message was decrypted successfully.";
+                    }
                 ?>
             </p>
         </div

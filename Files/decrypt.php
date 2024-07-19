@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //$_SESSION['message'] = decrypt($myData, $method, $key);
 
         //Decrypt the message that has been encrypted
-        $message = decrypt($myData, $method, $key);
+        $_SESSION['decrypt'] = decrypt($myData, $method, $key);
 
         //Change the boolean value to null
         $_SESSION['done'] = null;

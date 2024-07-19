@@ -60,15 +60,6 @@ main {
     justify-content: flex-end;
 }
 
-.enc-button {
-    margin: 0pt 10pt;
-    padding: 10pt 20pt;
-    border-radius: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #f4f3ee;
-    background-color: #210b2c;
-}
-
 #key-box {
     display: flex;
     padding: 10pt;
@@ -84,4 +75,19 @@ main {
     width: -webkit-fill-available;
     height: 20pt;
     border-radius: 10px;
+}
+
+.send-key {
+    display: flex;
+    flex-direction: column;
+}
+
+.enc-button {
+    margin: 0pt 10pt;
+    padding: 10pt 20pt;
+    border-radius: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #f4f3ee;
+    background-color: #210b2c;
+    justify-self: flex-end;
 }
