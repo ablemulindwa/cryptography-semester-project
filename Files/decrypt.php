@@ -27,9 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Decrypt the message that has been encrypted
         $_SESSION['decrypt'] = decrypt($myData, $method, $key);
 
-        //Change the boolean value to null
-        //$_SESSION['done'] = null;
-
     } else {
         echo "Decryption failed! Missing credentials.<br>";
     }

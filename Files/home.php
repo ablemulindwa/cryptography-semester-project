@@ -107,23 +107,20 @@ session_start();
 
         <p><br><br>Or if you would like to <b>Decrypt</b> a message sent to you, press the Decrypt button.</p>
 
-        <!--TODO: Block for output and decryption elements-->
+        <!--TODO: Block for decryption elements-->
         <div id="form-container">
             <form id="dec-form" class="enc-form" action="/Files/decrypt.php" method="post">
 
                 <!--Text area for collection of user inputted message-->
-                <textarea id="enc-textbox" type="text" name="message" placeholder="Paste cipher text here for decryption..."><?php
-                    echo trim($_SESSION['decrypt']);
-                ?>
-                </textarea>
+                <textarea id="enc-textbox" type="text" name="message" placeholder="Paste cipher text here for decryption..."><?php 
+                   echo trim($_SESSION['decrypt']);
+                ?></textarea>
                 
                 <!--Text area for collection of generated encryption key-->
                 <div id="key-box">
                     <label for="key" id="key-text">Enter Generated Key: </label>
                     <input type="text" id="key-pwd" name="key"></input>
                 </div>
-        
-            </div>
 
             </form>
 
