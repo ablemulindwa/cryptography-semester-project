@@ -21,17 +21,12 @@ function encrypt($myData, $method, $key){
 
     // Check for encryption errors
     if ($encrypted_message === false) {
-    die('Encryption failed: ' . openssl_error_string());
+        die('Encryption failed: ' . openssl_error_string());
     }
 
     // Encode the encrypted message
     $encoded_message = base64_encode($encrypted_message);
 
-    // Display the original message and the encoded encrypted message
-    //echo "\nOriginal Message: " . $myData . PHP_EOL;
-    //echo "\nEncoded Encrypted Message: " . $encoded_message . PHP_EOL;
-
-    //return some things to be used in the decryption one
     return $encoded_message;
 }
 
@@ -52,15 +47,3 @@ function decrypt($encoded_message, $method, $key){
 
     return $decrypted_data;
 }
-
-//echo "\nOriginal Message: " . $myData . PHP_EOL;
-
-//Test statement 1
-//$encoded_message = encrypt($myData, $method, $key);
-
-//echo "\nEncoded Encrypted Message: " . $encoded_message . PHP_EOL;
-
-//Test statement 2
-//$decrypted_data = decrypt($encoded_message, $method, $key);
-
-//echo "\nDecrypted Message: " . $decrypted_data . PHP_EOL;

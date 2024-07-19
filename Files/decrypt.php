@@ -34,9 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Decryption failed! Missing credentials.<br>";
     }
 
-    echo "The new, decrypted message is: " . $decrypt;
-    echo "The key used is: " . $key;
-
     //Return to the main page
     header("Location: ../Files/home.php");
 }

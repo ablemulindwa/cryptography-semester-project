@@ -11,8 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myData = $message;
     $key = createKey();
 
-    //Encryption block, ensuring that message 
-    //can't be double encrypted in the same session.
+    //Encryption block, ensuring that message can't be double encrypted in the same session.
     if ($_SESSION['done'] == Null){
         
         //Capture the key that has been used
@@ -27,10 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Encryption failed! Can't encrypt a message more than once.<br>";
     }
-
-    //Tests for the output
-    echo "The new, encrypted message is: " . $_SESSION['message']."<br>";
-    echo "The generated key is: " . $_SESSION['key'];
 
     header("Location: ../Files/home.php");
 }
